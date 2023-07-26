@@ -22,7 +22,7 @@ const ChatGptApi = ({ onQuestionFetched }) => {
           text: questionText,
           options: options.map(option => option.slice(3)),  // remove the initial "A. " part
         };
-
+          
         onQuestionFetched(questionData);
 
       } catch (err) {
