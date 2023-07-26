@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 const HighScore = () => {
   const [scores, setScores] = useState([]);

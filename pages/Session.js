@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 const Session = ({ score, onNewHighScore }) => {
   const [highScore, setHighScore] = useState(0);

@@ -1,16 +1,14 @@
 import React from 'react';
 
-const GameOver = ({ score }) => {
-  const history = useHistory();
+const GameOver = ({ score, onNavigate }) => {
 
   function handlePlayAgain() {
-    history.push('/category');  // replace '/category' with your actual Category component route
+    onNavigate('category');
   }
 
   function handleExit() {
-    history.push('/');  // replace '/' with your actual GameFace component route
+    onNavigate('gameface');
   }
-  const { score } = useLocation().state;
 
   return (
     <div>

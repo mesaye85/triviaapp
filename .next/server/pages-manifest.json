@@ -1,0 +1,15 @@
+{
+  "/Category": "pages/Category.html",
+  "/GameFace": "pages/GameFace.html",
+  "/GameOver": "pages/GameOver.html",
+  "/GptApi": "pages/GptApi.html",
+  "/HighScore": "pages/HighScore.html",
+  "/QuestionCard": "pages/QuestionCard.html",
+  "/QuestionProcessor": "pages/QuestionProcessor.html",
+  "/Session": "pages/Session.html",
+  "/": "pages/index.html",
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
+}

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 const ChatGptApi = ({ onQuestionFetched }) => {
   const [error, setError] = useState(null);

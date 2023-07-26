@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 
 const QuestionProcessor = ({ category, onGameOver }) => {
   const [questions, setQuestions] = useState([]);
