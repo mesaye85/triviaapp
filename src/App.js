@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import GameFace from './GameFace';
+import Category from './Category';
+import QuestionProcessor from './QuestionProcessor';
+import GameOver from './GameOver';
+import HighScore from './HighScore';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [page, setPage] = useState('gameface');
+
+  const handleNavigation = (newPage) => {
+    setPage(newPage);
+
+  }
+
+  const renderPage = () => {
+    switch (page) {
+      case 'gameover':
+        return <GameOver onNavigate={handleNavigation} />;
+      case 'questionprocessor':
+        return <QuestionProcessor onNavigate={handleNavigation} />;
+      case 'category':
+        return <Category onNavigate={handleNavigation} />;
+      case 'highscore':
+        return <HighScore onNavigate={handleNavigation} />;
+      case 'gameface':
+      default:
+        return <GameFace onNavigate={handleNavigation} />;
+    }
+  };
+
+  return renderPage();
 }
 
 export default App;
