@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-
-
-const ChatGptApi = ({ onQuestionFetched }) => {
+const GptApi = ({ onQuestionFetched }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -44,4 +42,4 @@ const ChatGptApi = ({ onQuestionFetched }) => {
   return <div>Loading question...</div>;
 };
 
-export default ChatGptApi;
+export default GptApi;

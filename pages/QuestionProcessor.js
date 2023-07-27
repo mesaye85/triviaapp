@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import GptApi from './GptApi';
 
 const QuestionProcessor = ({ category, onGameOver }) => {
   const [questions, setQuestions] = useState([]);
@@ -7,8 +9,14 @@ const QuestionProcessor = ({ category, onGameOver }) => {
   const [score, setScore] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [error, setError] = useState(null);
+  const [allQuestionsAnswered, setAllQuestionsAnswered] = useState(false);
 
   useEffect(() => {
+    if (category === 'ChatGPT') {
+      // Fetch question from GPT-3 API
+      return;
+    }
+
     axios.get(`/api/questions/${category}`)
       .then(response => {
         const shuffledQuestions = shuffleArray(response.data);
@@ -53,13 +61,15 @@ const QuestionProcessor = ({ category, onGameOver }) => {
   function getNextQuestion() {
     const currentQuestionIndex = questions.findIndex(q => q.id === currentQuestion.id);
     if (currentQuestionIndex >= questions.length - 1) {
-      onGameOver(score); // Game Over when all questions have been answered
+      // If all questions have been answered, set a flag instead of ending the game
+      setAllQuestionsAnswered(true); 
     } else {
       const nextQuestion = questions[currentQuestionIndex + 1];
       setSelectedOption(null);
       setCurrentQuestion(nextQuestion);
     }
   }
+  
 
   function handleOptionChange(e) {
     setSelectedOption(e.target.value);
@@ -71,10 +81,41 @@ const QuestionProcessor = ({ category, onGameOver }) => {
     }
   }
 
+  function handleGptQuestionFetched(questionData) {
+    setQuestions([questionData]);
+    setCurrentQuestion(questionData);
+  }
+
   if (error) {
     return <div>Error: {error}</div>;
   }
 
+  if (category === 'ChatGPT' && !currentQuestion) {
+    return <GptApi onQuestionFetched={handleGptQuestionFetched} />;
+  }
+  const handlePlayAgain = () => {
+    // Reset the game to the initial state
+    setSelectedOption(null);
+    setCurrentQuestion(questions[0]);
+    setScore(0);
+    setAllQuestionsAnswered(false);
+  };
+  if (allQuestionsAnswered) {
+    return (
+      <div>
+        <h1>Congratulations! You have answered all questions.</h1>
+        <p>Your final score is: {score}</p>
+        <button onClick={handlePlayAgain}>Play Again</button>
+        <button onClick={handleExit}>Exit</button>
+      </div>
+    );
+  }
+   
+  const handleExit = () => {
+    // Call the onGameOver function with the final score
+    onGameOver(score);
+  };
+  
   return (
     <div>
       <h1>{currentQuestion?.question}</h1>

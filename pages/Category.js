@@ -1,15 +1,8 @@
 import React from 'react';
 
-const categories = [
-  'History',
-  'ChatGPT',
-  'Sports',
-  'Science tech',
-  'Geography',
-  'Entertainment'
-];
-
 const Category = ({ onCategorySelect }) => {
+  const categories = ['History', 'Geography', 'Sports', 'Science & Tech', 'Entertainment', 'ChatGPT'];
+
   return (
     <div>
       <h1>Select a Category</h1>

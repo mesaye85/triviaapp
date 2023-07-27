@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/CFUAj2S5PPWCyzYnvxeM0/_buildManifest.js",
-    "static/CFUAj2S5PPWCyzYnvxeM0/_ssgManifest.js"
+    "static/PYsLVU0aqQC0Zk5atYcB-/_buildManifest.js",
+    "static/PYsLVU0aqQC0Zk5atYcB-/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -14,14 +14,15 @@
       "static/chunks/webpack-8fa1640cc84ba8fe.js",
       "static/chunks/framework-7a7e500878b44665.js",
       "static/chunks/main-0a9b5d9f75e3dd77.js",
-      "static/chunks/278-daa48384143078fb.js",
-      "static/chunks/pages/index-7849b7a230746ed9.js"
+      "static/chunks/154-454aae7a1f6cc481.js",
+      "static/chunks/278-d9ad9b72a09de8b5.js",
+      "static/chunks/pages/index-926ced20452fe796.js"
     ],
     "/Category": [
       "static/chunks/webpack-8fa1640cc84ba8fe.js",
       "static/chunks/framework-7a7e500878b44665.js",
       "static/chunks/main-0a9b5d9f75e3dd77.js",
-      "static/chunks/pages/Category-73d3f0a6e14e844c.js"
+      "static/chunks/pages/Category-a7cb39e47931baf7.js"
     ],
     "/Footer": [
       "static/chunks/webpack-8fa1640cc84ba8fe.js",
@@ -33,8 +34,9 @@
       "static/chunks/webpack-8fa1640cc84ba8fe.js",
       "static/chunks/framework-7a7e500878b44665.js",
       "static/chunks/main-0a9b5d9f75e3dd77.js",
-      "static/chunks/278-daa48384143078fb.js",
-      "static/chunks/pages/GameFace-5bdc976bf5cc603e.js"
+      "static/chunks/154-454aae7a1f6cc481.js",
+      "static/chunks/278-d9ad9b72a09de8b5.js",
+      "static/chunks/pages/GameFace-35f9b6b3cef98d58.js"
     ],
     "/GameOver": [
       "static/chunks/webpack-8fa1640cc84ba8fe.js",
@@ -71,7 +73,8 @@
       "static/chunks/webpack-8fa1640cc84ba8fe.js",
       "static/chunks/framework-7a7e500878b44665.js",
       "static/chunks/main-0a9b5d9f75e3dd77.js",
-      "static/chunks/pages/QuestionProcessor-84966e8fad997f6a.js"
+      "static/chunks/154-454aae7a1f6cc481.js",
+      "static/chunks/pages/QuestionProcessor-39147475e643e769.js"
     ],
     "/Registration": [
       "static/chunks/webpack-8fa1640cc84ba8fe.js",

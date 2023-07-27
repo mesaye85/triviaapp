@@ -10,69 +10,69 @@ import Registration from "./Registration";
 import Category from "./Category";
 
 function GameFace() {
-  const [showGame, setShowGame] = useState(false);
-  const [isLoggingIn, setIsLoggingIn] = useState(false);
-  const [isRegistering, setIsRegistering] = useState(false);
+  const [screen, setScreen] = useState('gameface');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showCategory, setShowCategory] = useState(false);
+  const [category, setCategory] = useState(null);  // New state variable for category
 
   const handlePlayGame = () => {
     if (isLoggedIn) {
-      setShowGame(true);
+      setScreen('game');
     } else {
-      setShowCategory(true);
+      setScreen('category');
     }
   };
 
+  const handleCategorySelect = (selectedCategory) => {
+    setCategory(selectedCategory);
+    setScreen('game');
+  };
+
   const handleLoginClick = () => {
-    setIsLoggingIn(true);
+    setScreen('login');
   };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
-    setShowGame(false);
-    setShowCategory(false);
+    setScreen('gameface');
   };
 
   const handleRegistration = () => {
-    setIsRegistering(true);
+    setScreen('registration');
+  };
+
+  const handleNavigate = (newScreen) => {
+    setScreen(newScreen);
   };
 
   useEffect(() => {
     if (isLoggedIn) {
-      setShowCategory(true);
+      setScreen('category');
     }
   }, [isLoggedIn]);
 
   return (
     <div className="app-container">
-      {!showGame && !isLoggingIn && !isRegistering && !showCategory && <TypingBanner />}
-      <div className="buttons-container">
-        {!showGame && !showCategory && (
-          <div>
-            <h1>Welcome to Trivia Game</h1>
-            <button className="nolog-button" onClick={handlePlayGame}>
-              Play Game
-            </button>
-            {!isLoggingIn && !isRegistering && (
-              <button className="log-button" onClick={handleLoginClick}>
-                LOGIN
-              </button>
-            )}
-            {!isLoggingIn && !isRegistering && (
-              <button className="log-button" onClick={handleRegistration}>
-                REGISTER
-              </button>
-            )}
-          </div>
-        )}
-        {isLoggingIn && <Login setIsLoggingIn={setIsLoggingIn} />}
-        {isRegistering && <Registration />}
-        {showCategory && <Category />}
-        {showGame && <GameOver />}
-        {showGame && <QuestionProcessor />}
-        {showGame && <Session />}
-      </div>
+      {screen === 'gameface' && <TypingBanner />}
+      {screen === 'gameface' && (
+        <div>
+          <h1>Welcome to Trivia Game</h1>
+          <button className="nolog-button" onClick={handlePlayGame}>
+            Play Game
+          </button>
+          <button className="log-button" onClick={handleLoginClick}>
+            LOGIN
+          </button>
+          <button className="log-button" onClick={handleRegistration}>
+            REGISTER
+          </button>
+        </div>
+      )}
+      {screen === 'login' && <Login setIsLoggingIn={setIsLoggedIn} />}
+      {screen === 'registration' && <Registration />}
+      {screen === 'category' && <Category onCategorySelect={handleCategorySelect} />} 
+      {screen === 'game' && <GameOver onNavigate={handleNavigate} />} 
+      {screen === 'game' && <QuestionProcessor category={category} />} 
+      {screen === 'game' && <Session />}
       <Footer />
     </div>
   );

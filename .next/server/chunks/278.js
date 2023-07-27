@@ -15,15 +15,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 
 
-const categories = [
-    "History",
-    "ChatGPT",
-    "Sports",
-    "Science tech",
-    "Geography",
-    "Entertainment"
-];
 const Category = ({ onCategorySelect })=>{
+    const categories = [
+        "History",
+        "Geography",
+        "Sports",
+        "Science & Tech",
+        "Entertainment",
+        "ChatGPT"
+    ];
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         children: [
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h1", {
@@ -87,8 +87,9 @@ const Footer = ()=>{
 /***/ }),
 
 /***/ 2278:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -104,6 +105,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Session__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(5614);
 /* harmony import */ var _Registration__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(8492);
 /* harmony import */ var _Category__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(3684);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_QuestionProcessor__WEBPACK_IMPORTED_MODULE_6__]);
+_QuestionProcessor__WEBPACK_IMPORTED_MODULE_6__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
 
 
 
@@ -120,12 +123,18 @@ function GameFace() {
     const [isRegistering, setIsRegistering] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
     const [isLoggedIn, setIsLoggedIn] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
     const [showCategory, setShowCategory] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    const [category, setCategory] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null); // New state variable for category
     const handlePlayGame = ()=>{
         if (isLoggedIn) {
             setShowGame(true);
         } else {
             setShowCategory(true);
         }
+    };
+    const handleCategorySelect = (selectedCategory)=>{
+        setCategory(selectedCategory);
+        setShowCategory(false);
+        setShowGame(true);
     };
     const handleLoginClick = ()=>{
         setIsLoggingIn(true);
@@ -178,9 +187,15 @@ function GameFace() {
                         setIsLoggingIn: setIsLoggingIn
                     }),
                     isRegistering && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_Registration__WEBPACK_IMPORTED_MODULE_8__["default"], {}),
-                    showCategory && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_Category__WEBPACK_IMPORTED_MODULE_9__["default"], {}),
+                    showCategory && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_Category__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                        onCategorySelect: handleCategorySelect
+                    }),
+                    "  // Pass handleCategorySelect as a prop",
                     showGame && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_GameOver__WEBPACK_IMPORTED_MODULE_5__["default"], {}),
-                    showGame && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_QuestionProcessor__WEBPACK_IMPORTED_MODULE_6__["default"], {}),
+                    showGame && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_QuestionProcessor__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                        category: category
+                    }),
+                    "  // Pass the selected category to QuestionProcessor",
                     showGame && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_Session__WEBPACK_IMPORTED_MODULE_7__["default"], {})
                 ]
             }),
@@ -190,6 +205,8 @@ function GameFace() {
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GameFace);
 
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
 
 /***/ }),
 
