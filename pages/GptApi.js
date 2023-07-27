@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+
 
 const ChatGptApi = ({ onQuestionFetched }) => {
   const [error, setError] = useState(null);
@@ -22,7 +25,7 @@ const ChatGptApi = ({ onQuestionFetched }) => {
           text: questionText,
           options: options.map(option => option.slice(3)),  // remove the initial "A. " part
         };
-          
+
         onQuestionFetched(questionData);
 
       } catch (err) {
