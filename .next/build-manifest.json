@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/PYsLVU0aqQC0Zk5atYcB-/_buildManifest.js",
-    "static/PYsLVU0aqQC0Zk5atYcB-/_ssgManifest.js"
+    "static/hlMcgLRMYT8raf0tP8UlO/_buildManifest.js",
+    "static/hlMcgLRMYT8raf0tP8UlO/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -15,7 +15,7 @@
       "static/chunks/framework-7a7e500878b44665.js",
       "static/chunks/main-0a9b5d9f75e3dd77.js",
       "static/chunks/154-454aae7a1f6cc481.js",
-      "static/chunks/278-d9ad9b72a09de8b5.js",
+      "static/chunks/278-7c3a55cbf19ca4ac.js",
       "static/chunks/pages/index-926ced20452fe796.js"
     ],
     "/Category": [
@@ -35,7 +35,7 @@
       "static/chunks/framework-7a7e500878b44665.js",
       "static/chunks/main-0a9b5d9f75e3dd77.js",
       "static/chunks/154-454aae7a1f6cc481.js",
-      "static/chunks/278-d9ad9b72a09de8b5.js",
+      "static/chunks/278-7c3a55cbf19ca4ac.js",
       "static/chunks/pages/GameFace-35f9b6b3cef98d58.js"
     ],
     "/GameOver": [

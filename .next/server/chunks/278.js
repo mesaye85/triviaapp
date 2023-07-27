@@ -97,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5893);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8131);
+/* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3918);
 /* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5973);
 /* harmony import */ var _TypingBanner__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3973);
 /* harmony import */ var _GameOver__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(8026);
@@ -118,38 +118,36 @@ _QuestionProcessor__WEBPACK_IMPORTED_MODULE_6__ = (__webpack_async_dependencies_
 
 
 function GameFace() {
-    const [showGame, setShowGame] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
-    const [isLoggingIn, setIsLoggingIn] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
-    const [isRegistering, setIsRegistering] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    const [screen, setScreen] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("gameface");
     const [isLoggedIn, setIsLoggedIn] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
-    const [showCategory, setShowCategory] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
     const [category, setCategory] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null); // New state variable for category
     const handlePlayGame = ()=>{
         if (isLoggedIn) {
-            setShowGame(true);
+            setScreen("game");
         } else {
-            setShowCategory(true);
+            setScreen("category");
         }
     };
     const handleCategorySelect = (selectedCategory)=>{
         setCategory(selectedCategory);
-        setShowCategory(false);
-        setShowGame(true);
+        setScreen("game");
     };
     const handleLoginClick = ()=>{
-        setIsLoggingIn(true);
+        setScreen("login");
     };
     const handleLogout = ()=>{
         setIsLoggedIn(false);
-        setShowGame(false);
-        setShowCategory(false);
+        setScreen("gameface");
     };
     const handleRegistration = ()=>{
-        setIsRegistering(true);
+        setScreen("registration");
+    };
+    const handleNavigate = (newScreen)=>{
+        setScreen(newScreen);
     };
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
         if (isLoggedIn) {
-            setShowCategory(true);
+            setScreen("category");
         }
     }, [
         isLoggedIn
@@ -157,48 +155,43 @@ function GameFace() {
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         className: "app-container",
         children: [
-            !showGame && !isLoggingIn && !isRegistering && !showCategory && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_TypingBanner__WEBPACK_IMPORTED_MODULE_4__["default"], {}),
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: "buttons-container",
+            screen === "gameface" && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_TypingBanner__WEBPACK_IMPORTED_MODULE_4__["default"], {}),
+            screen === "gameface" && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
                 children: [
-                    !showGame && !showCategory && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                        children: [
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h1", {
-                                children: "Welcome to Trivia Game"
-                            }),
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
-                                className: "nolog-button",
-                                onClick: handlePlayGame,
-                                children: "Play Game"
-                            }),
-                            !isLoggingIn && !isRegistering && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
-                                className: "log-button",
-                                onClick: handleLoginClick,
-                                children: "LOGIN"
-                            }),
-                            !isLoggingIn && !isRegistering && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
-                                className: "log-button",
-                                onClick: handleRegistration,
-                                children: "REGISTER"
-                            })
-                        ]
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h1", {
+                        children: "Welcome to Trivia Game"
                     }),
-                    isLoggingIn && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_Login__WEBPACK_IMPORTED_MODULE_2__["default"], {
-                        setIsLoggingIn: setIsLoggingIn
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                        className: "nolog-button",
+                        onClick: handlePlayGame,
+                        children: "Play Game"
                     }),
-                    isRegistering && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_Registration__WEBPACK_IMPORTED_MODULE_8__["default"], {}),
-                    showCategory && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_Category__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                        onCategorySelect: handleCategorySelect
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                        className: "log-button",
+                        onClick: handleLoginClick,
+                        children: "LOGIN"
                     }),
-                    "  // Pass handleCategorySelect as a prop",
-                    showGame && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_GameOver__WEBPACK_IMPORTED_MODULE_5__["default"], {}),
-                    showGame && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_QuestionProcessor__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                        category: category
-                    }),
-                    "  // Pass the selected category to QuestionProcessor",
-                    showGame && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_Session__WEBPACK_IMPORTED_MODULE_7__["default"], {})
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                        className: "log-button",
+                        onClick: handleRegistration,
+                        children: "REGISTER"
+                    })
                 ]
             }),
+            screen === "login" && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_Login__WEBPACK_IMPORTED_MODULE_2__["default"], {
+                setIsLoggingIn: setIsLoggedIn
+            }),
+            screen === "registration" && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_Registration__WEBPACK_IMPORTED_MODULE_8__["default"], {}),
+            screen === "category" && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_Category__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                onCategorySelect: handleCategorySelect
+            }),
+            screen === "game" && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_GameOver__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                onNavigate: handleNavigate
+            }),
+            screen === "game" && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_QuestionProcessor__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                category: category
+            }),
+            screen === "game" && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_Session__WEBPACK_IMPORTED_MODULE_7__["default"], {}),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], {})
         ]
     });
